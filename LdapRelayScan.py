@@ -130,7 +130,7 @@ def DoesLdapsCompleteHandshake(dcIp):
     ssl_sock.do_handshake()
     ssl_sock.close()
     return True
-  except Exception as e:
+  except ssl.SSLError as e:
     if "CERTIFICATE_VERIFY_FAILED" in str(e):
         ssl_sock.close()
         return True
